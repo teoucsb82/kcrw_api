@@ -1,5 +1,5 @@
 class KcrwApi
-  BASE = 'https://tracklist-api.kcrw.com/Music/date'
+  BASE = 'https://tracklist-api.kcrw.com/Music/date'.freeze
 
   def initialize(date_time)
     @date_time = date_time

@@ -1,2 +1,2 @@
-gem 'rake'
 gem 'minitest'
+gem 'rake'
