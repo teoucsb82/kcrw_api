@@ -5,19 +5,12 @@ require 'json'
 class KcrwApi
   BASE = 'https://tracklist-api.kcrw.com/Music/date'.freeze
 
+  attr_reader :tracks
+
   def initialize(date_time)
+    raise 'Must be a DateTime object' unless date_time.is_a?(DateTime)
     @date_time = date_time
-  end
-
-  def endpoint
-    "#{BASE}/#{date}?time=#{time}"
-  end
-
-  def tracks
-    @contents ||= URI.parse(endpoint).read
-    JSON.parse(@contents).each do |track|
-      Track.new(track)
-    end
+    @tracks = get_tracks!
   end
 
   private
@@ -28,6 +21,18 @@ class KcrwApi
 
   def day
     @date_time.day < 10 ? "0#{@date_time.day}" : @date_time.day
+  end
+
+  def endpoint
+    "#{BASE}/#{date}?time=#{time}"
+  end
+
+  def get_tracks!
+    @contents ||= URI.parse(endpoint).read
+    @tracks = []
+    JSON.parse(@contents).each do |track|
+      @tracks << Track.new(track)
+    end
   end
 
   def hour
