@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'kcrw_api'
-  s.version     = '0.0.1.pre'
+  s.version     = '0.0.2.pre'
   s.date        = '2017-05-21'
   s.summary     = 'KCRW Tracklist API Wrapper'
   s.description = 'A gem to return KCRW tracklists'

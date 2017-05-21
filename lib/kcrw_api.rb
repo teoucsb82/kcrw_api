@@ -1,3 +1,7 @@
+require 'date'
+require 'open-uri'
+require 'json'
+
 class KcrwApi
   BASE = 'https://tracklist-api.kcrw.com/Music/date'.freeze
 
@@ -7,6 +11,13 @@ class KcrwApi
 
   def endpoint
     "#{BASE}/#{date}?time=#{time}"
+  end
+
+  def tracks
+    @contents ||= URI.parse(endpoint).read
+    JSON.parse(@contents).each do |track|
+      Track.new(track)
+    end
   end
 
   private
