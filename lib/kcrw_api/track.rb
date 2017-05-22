@@ -25,7 +25,8 @@ class KcrwApi
     def spotify_uri
       uri = "https://api.spotify.com/v1/search?q=#{@artist}%20#{@title}&type=track"
       @contents ||= JSON.parse(open(uri).read)
-      @spotify_uri ||= @contents['tracks']['items'].first['uri'] if @contents
+      return nil unless @contents && @contents['tracks'] && @contents['tracks']['items']
+      @spotify_uri ||= @contents['tracks']['items'].first['uri']
     end
   end
 end
