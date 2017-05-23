@@ -3,7 +3,7 @@ require 'open-uri'
 require 'json'
 
 class KcrwApi
-  BASE = 'https://tracklist-api.kcrw.com/Music/date'.freeze
+  BASE = 'https://tracklist-api.kcrw.com/Simulcast/date'.freeze
 
   attr_reader :tracks
 

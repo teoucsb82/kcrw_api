@@ -5,7 +5,7 @@ class KcrwApi
     attr_reader :album
     attr_reader :artist
     attr_reader :label
-    attr_reader :spotify_uri
+    # attr_reader :spotify_uri
     attr_reader :title
     attr_reader :year
 
@@ -17,7 +17,7 @@ class KcrwApi
       @label = track_hash['label']
       @title = track_hash['title']
       @year = track_hash['year']
-      @spotify_uri = spotify_uri
+      # @spotify_uri = spotify_uri
     end
 
     private
